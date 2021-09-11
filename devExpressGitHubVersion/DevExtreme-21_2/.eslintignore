@@ -1,0 +1,14 @@
+artifacts/*
+js/viz/docs/*
+node_modules/*
+build/*
+testing/helpers/sinon/*
+*.j.tsx
+playground/*
+themebuilder/data/metadata/*
+themebuilder-scss/dist/*
+themebuilder-scss/coverage/*
+themebuilder-scss/src/data/metadata/*
+js/bundles/dx.custom.js
+testing/jest/utils/transformers/*
+ts/

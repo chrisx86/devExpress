@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "../sizes" as *;
+@use "../colors" as *;
+
+// adduse
+
+$accordion-title-color: null !default;
+$accordion-item-title-opened-bg: null !default;
+
+@if $color == "light" {
+  $accordion-title-color: $base-accent !default;
+  $accordion-item-title-opened-bg: transparent !default;
+}
+
+$never-used: collector(
+(
+"$accordion-title-color": $accordion-title-color,
+"$accordion-item-title-opened-bg": $accordion-item-title-opened-bg,
+)
+);
