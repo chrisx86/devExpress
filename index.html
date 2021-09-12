@@ -17,12 +17,218 @@
             <li>aaaaaaaaaaa</li>
         </ul>
     </div>
+    <div>
+        <select class="form-control" id="StudentGender" name="StudentGender">
+            <option>Select Gender</option> 
+            <option>Male</option> 
+            <option>Female</option> 
+            <option>Female my length testing</option>
+        </select>
+    </div>
+    <span id="goal_left">3 goals lect</span>
+    <div class="dandan">danlaoshi</div>
+    <dir>
+    </dir>
+    <img src="" alt="">
 </body>
 
 <script>
-    (function() {
+    (() => {
         let a = document.querySelectorAll("#B");
-        console.log(a);
+        //console.log(a);
+
+        var myNodeList = document.querySelectorAll('option');
+        let maxLength = 0;
+        //console.log(myNodeList);
+        myNodeList.forEach((index, value) => {
+            let currentLength = index.firstChild.nodeValue.length;
+            console.log(currentLength);
+            if (currentLength > maxLength) {
+                maxLength = currentLength;
+            }
+        });
+        console.log('maxLength:', maxLength);
+
+        // searched_table_data() {
+        //     var clone = JSON.parse(JSON.stringify(this.table_data))
+        //     var re = new RegExp("(" + this.search_key + ")")
+        //     var temp = clone.filter(o =>
+        //         Object.values(o).reduce(
+        //             (result, b) => result || (b + "").indexOf(this.search_key) != -1, false
+        //         )
+        //     )
+        //     return temp
+        // }
+
+
+        // 取得 id 為 parent-id 的 HTML 元素
+        //var parentDOM = document.getElementById('parent-id');
+
+        // 取得 parentDOM 下面所有 class 是 test 的 HTML 元素
+        //var test = parentDOM.getElementsByClassName('test');
+
+        // 輸出 1
+        //console.log(test.length)
+
+        // 輸出 <p class="test">hello word2</p>
+        //console.log(parentDOM.getElementsByClassName('test')[0]);
+
+        // 取得同時有 red 和 test 兩個 class name 的所有元素
+        //document.getElementsByClassName('red test');
+
+        // 找出所有 class name 是 foo 或 bar 的 <div> 元素
+        //var elems1 = document.querySelectorAll('div.foo, div.bar');
+
+        // 找出所有的 <p> 元素
+        //var elems2 = document.querySelectorAll('p');
+
+        // 取得 id 為 foo 的元素/
+        //var foo = document.getElementById('foo');
+
+        // 元素的 hasChildNodes() 方法可以用來判斷一個元素下有沒子元素
+        // if (foo.hasChildNodes()) {
+
+        //     // 取得 foo 元素的所有子元素集合
+        //     var children = foo.childNodes;
+
+        //     // 可以用 for 迴圈來遍歷每一個子元素
+        //     for (var i = 0; i < children.length; ++i) {
+        //         // 用 children[i] 來取得遍歷到子元素
+        //     }
+        // }
+
+        // 取得div父元素其下所有的p子元素
+        // $("div > p"); //jQuery
+
+        // 【
+        // 將選取出來的元素快取到記憶體中】
+        // 如果元素會重複使用到， 而且選取出來的結果不會產生變化時， 盡量將已經選取出來的元素儲存到變數中， 避免每次使用時都必須再選取一次、 再重新解析一次文件。
+        // ps.最常用的應該是： $this = $(this);
+
+        //document.querySelectorAll("span#goal_left")[0].firstChild.nodeValue;
+        //var aa = document.querySelectorAll("span#goal_left");
+        //console.log(aa);
+
+        // //確認有選取到元素
+        // if ($("#someDiv").length) {
+        //     //hooray!!! it exists... 
+        // }​
+        // //檢查頁面當中是否有隱藏元素
+        // if ($(element).is(":visible") == "true") {
+        //     //The element is Visible
+        // }​
+        // //取得最鄰近的父元素
+        // $("#searchBox").closest("div");​
+
+        // public static void FileRead2() {
+        //     //string file = @"D:\devExpress\npmversion\dx.all.debug.js";
+        //     string fileSrc = @ "K:\程式專案\github\DevExpress\devExpressGitHubVersion\dx.all.debug.js";
+        //     //string file2 = @"D:\devExpress\npmversion\dx.all.debug.debugger.js";
+        //     string fileDist = @ "K:\程式專案\github\DevExpress\devExpressGitHubVersion\dx.all.debug.debugger.js";
+        //     var stream = File.Create(fileDist);
+        //     var sr = new StreamWriter(stream);
+        //     int count = 0;
+        //     foreach(var result in File.ReadAllLines(fileSrc)) {
+        //         if (result.IndexOf(") {") != -1 && result.IndexOf("switch") == -1 && result.IndexOf(") {}") == -1) {
+        //             sr.WriteLine(result);
+        //             sr.WriteLine("debugger;");
+        //         } else {
+        //             sr.WriteLine(result);
+        //         }
+        //     }
+        //     sr.Flush();
+        //     sr.Close();
+        //     sr.Dispose();
+        //     stream.Close();
+        //     stream.Dispose();
+        // }
+
+        /*
+        public static void FileRead2()
+        {
+            //string file = @"D:\devExpress\npmversion\dx.all.debug.js";
+            string fileSrc = @"K:\程式專案\github\DevExpress\fontendTest\js\dx.all.debug.js";
+            //string file2 = @"D:\devExpress\npmversion\dx.all.debug.debugger.js";
+            string fileDist = @"K:\程式專案\github\DevExpress\fontendTest\js\dx.all.debug.debugger.js";
+            var stream = File.Create(fileDist);
+            var sr = new StreamWriter(stream);
+            int count = 0;
+            foreach (var result in File.ReadAllLines(fileSrc))
+            {
+                if(result.IndexOf(") {") != -1 
+                    && result.IndexOf("switch") == -1 
+                    && result.IndexOf(") {}") == -1 
+                    && result.IndexOf("for") == -1 
+                    && result.IndexOf("if") == -1 
+                    && result.IndexOf("callback") == -1 
+                    && result.IndexOf("return") == -1 
+                    && result.IndexOf("mouseover") == -1 
+                    && result.IndexOf("mouseout") == -1 
+                    && result.IndexOf("_proto._executeAction = function(e)") == -1 
+                    && result.IndexOf("validate: createValidatorByTargetElement((function($target)") == -1 
+                    && result.IndexOf("var rendererWrapper = function()") == -1 
+                    && result.IndexOf("validate: createValidatorByTargetElement((function($target)") == -1 
+                    && result.IndexOf("var rendererWrapper = function()") == -1 
+                    && result.IndexOf("_proto._validateAction = function(e)") == -1 
+                    && result.IndexOf("_proto.execute = function()") == -1 
+                    && result.IndexOf("_defaultActionArgs: function()") == -1 
+                    && result.IndexOf("(0, _element.setPublicElementWrapper)((function($element)") == -1 
+                    && result.IndexOf("exports.getPublicElement = function(element)") == -1 
+                    && result.IndexOf("element: function()") == -1 
+                    && result.IndexOf("$element: function()") == -1 
+                    && result.IndexOf("_proto.get = function()") == -1 
+                    && result.IndexOf("_proto._normalizeName = function(name, silent)") == -1 
+                    && result.IndexOf("_typeof = function(obj)") == -1 
+                    && result.IndexOf("var type = function(object)") == -1 
+                    && result.IndexOf("_proto.option = function(options, value)") == -1 
+                    && result.IndexOf("option: function()") == -1 
+                    && result.IndexOf("_modelByElement: function()") == -1 
+                    && result.IndexOf("_defaultActionArgs: function()") == -1 
+                    && result.IndexOf("executeAction: function(actionName, options)") == -1 
+                    && result.IndexOf("(0, _element.setPublicElementWrapper)((function($element)") == -1 
+                    && result.IndexOf("exports.getPublicElement = function(element)") == -1 
+                    && result.IndexOf("var rendererWrapper = function()") == -1 
+                    && result.IndexOf("var getOptions = function(event)") == -1 
+                    && result.IndexOf("_events_engine.default.on($table") == -1 
+                    && result.IndexOf("_applyToEmitters: function(method, arg)") == -1 
+                    && result.IndexOf("_pointerMoveHandler: function(e)") == -1 
+                    && result.IndexOf("trigger: function(element)") == -1 
+                    && result.IndexOf("object[key] = function()") == -1 
+                    && result.IndexOf("exports.extend = function extend(target)") == -1 
+                    && result.IndexOf("var fixMethod = function(e)") == -1 
+                    && result.IndexOf("var event = function(originalEvent)") == -1 
+                    && result.IndexOf("var createEvent = function(originalEvent, args)") == -1 
+                    && result.IndexOf("exports.fireEvent = function(props)") == -1 
+                    && result.IndexOf("_fireEvent: function(args)") == -1 
+                    && result.IndexOf("exports.extend = function extend(target)") == -1 
+                    && result.IndexOf("this.pointers = function()") == -1 
+                    && result.IndexOf("var normalizeMouseEvent = function(e)") == -1 
+                    && result.IndexOf("_fireEvent: function(args)") == -1 
+                    && result.IndexOf("(0, _iterator.each)(EVENT_SOURCES_REGEX, (function(key)") == -1 
+                    && result.IndexOf("var eventSource = function(_ref)") == -1 
+                    && result.IndexOf("_getDelegateTarget: function(e)") == -1 
+                    && result.IndexOf("_handler: function(e) {") == -1 
+                    && result.IndexOf("_events_engine.default.on(element, this._originalEvents") == -1 
+                    && result.IndexOf("var removePointer = function(e)") == -1 
+                    && result.IndexOf("(0, _iterator.each)(pointers, (function(i, pointer)") == -1 
+                    && result.IndexOf("var getPointerIndex = function(e)") == -1 
+                    && result.IndexOf("addEventsListener(eventMap.dxpointermove") == -1)//
+                {
+                    sr.WriteLine(result);
+                    sr.WriteLine("debugger;");
+                }
+                else
+                {
+                    sr.WriteLine(result);
+                }
+            }
+            sr.Flush();
+            sr.Close();
+            sr.Dispose();
+            stream.Close();
+            stream.Dispose();
+        }
+        */
     })();
 </script>
 
