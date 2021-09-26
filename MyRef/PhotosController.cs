@@ -438,21 +438,41 @@ namespace PhotoSharing.Controllers
                             }
                         }
                         //ref: https://dotblogs.com.tw/supershowwei/2016/12/09/221622
-                        conString = ConfigurationManager.ConnectionStrings["PhotoSharing"].ConnectionString;
-                        using (SqlConnection con = new SqlConnection(conString))
+                        //conString = ConfigurationManager.ConnectionStrings["PhotoSharing"].ConnectionString;
+                        //using (SqlConnection con = new SqlConnection(conString))
+                        //{
+                        //    using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                        //    {
+                        //        //Set the database table name.  
+                        //        sqlBulkCopy.DestinationTableName = "Comments";
+                        //        con.Open();
+                        //        sqlBulkCopy.WriteToServer(dt);
+                        //        con.Close();
+                        //        return Json("File uploaded successfully");
+                        //    }
+                        //}
+         
+                        foreach (DataRow dr in dt.Rows)
                         {
-                            using (SqlBulkCopy sqlBulkCopy = new SqlBulkCopy(con))
+                            var a = dr.Field<double>("CommentID");
+                            var b = dr.Field<string>("Subject");
+                            var c = dr.Field<string>("Body");
+                            var d = dr.Field<string>("UserName");
+                            var e = dr.Field<double>("PhotoID");
+                            string sqlstr3 = $@"INSERT INTO Comments ([Subject] ,[Body], [UserName], [PhotoID]) 
+                               VALUES ('{b}', '{c}', '{d}', {e})";
+                            conString = ConfigurationManager.ConnectionStrings["PhotoSharing"].ConnectionString;
+                            using (SqlConnection conn = new SqlConnection(conString))
                             {
-                                //Set the database table name.  
-                                sqlBulkCopy.DestinationTableName = "Comments";
-                                con.Open();
-                                sqlBulkCopy.WriteToServer(dt);
-                                con.Close();
-                                return Json("File uploaded successfully");
+                                conn.Open();
+                                using (SqlCommand cmd = new SqlCommand(sqlstr3, conn))
+                                {
+                                    cmd.ExecuteNonQuery();
+                                }
                             }
                         }
+
                     }
-                    
                     catch (Exception e)
                     {
                         return Json("error" + e.Message);
