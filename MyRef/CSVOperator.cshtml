@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "CSVOperator";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/Css/WorkTest/WorkTest.css" />
+<div class="text-center">
+    <h1 class="display-4">CSVOperator</h1>
+</div>
+<hr />
+<div class="container">
+    <div id="myWorksTest">
+        <div id="leftArea" class="col-md-4">
+            <label for="SelectBox1">EQPID</label>
+            <div id="SelectBox1" name="SelectBox1"></div>
+            <br/>
+            <label for="SelectBox2">TOOL</label>
+            <div id="SelectBox2" name="SelectBox2"></div>
+        </div>
+        <div id="rightArea" class="col-md-4">
+            <button id="btn_ExcelDownload" type="button" class="btn btn-primary">ExcelDownload</button>
+            <div id="fileArea">
+                <input id="fileUpload" type="file" class="form-control"  data-allowed-file-extensions='["xlsx", "xls"]'/>
+                <button id="btn_UploadExcel" type="button" class="btn btn-primary">UploadExcel</button>
+            </div>
+        </div>
+    </div>
+    @*<form method="post" enctype="multipart/form-data" action="/api/files">
+        <input type="file" name="files" multiple accept="image/*" />
+        <br />
+        <input type="submit" value="Upload" />
+    </form>*@
+    <div>
+        <div>
+            <button id="btn_OK" type="button" class="btn btn-success">OK</button>
+        </div>
+    </div>
+
+    <hr />
+    <div>
+        <div id="groupingTable"></div>
+    </div>
+    <div>
+        <div id="groupingHistoryTable"></div>
+    </div>
+    <div class="demo-container">
+        <div id="gridContainer"></div>
+    </div>
+
+</div>
+@section scripts{
+    <script defer src="~/lib/js/bootstrap.bundle.min.js"></script>
+    <script defer src="~/lib/js/dx.all.js"></script>
+    <script defer src="~/lib/js/CSVOperator.js"></script>
+}

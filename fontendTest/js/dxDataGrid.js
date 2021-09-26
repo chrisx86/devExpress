@@ -10,7 +10,20 @@
             format: '',
             dataType: 'string',
             allowEditing: false,
-            fixed: true
+            fixed: true,
+            calculateFilterExpression: function (value, operation, target) {
+                var column = this;
+                if (value) {
+                    if (operation == "contains") {
+                        return [ rowObj => {
+                            return new RegExp(value.replace("*", ".*")).test(column.calculateCellValue(rowObj))
+                        }, '=', true];
+                    }
+                    else {
+                        return [column.dataField, operation, value];
+                    }
+                }
+            }
         },
         {
             dataField: 'EQPID',
@@ -41,7 +54,7 @@
             displayMode: 'compact'
         },
         filterRow: {
-            visible: false,
+            visible: true,
             applyFilter: "auto"
         },
         searchPanel: {
@@ -105,7 +118,25 @@
             format: '',
             dataType: 'string',
             allowEditing: false,
-            fixed: true
+            fixed: true,
+            calculateFilterExpression: function (value, operation) {
+                var column = this;
+                function matchRuleShort(str, rule) {
+                    var r = new RegExp(rule.replace("*", ".*")).test(str);
+                    debugger;
+                    return new RegExp(rule.replace("*", ".*")).test(str);
+                }
+                if (value) {
+                    if (!operation) {
+                        return [function (data) {
+                            return matchRuleShort(column.calculateCellValue(data), value)
+                        }, '=', true];
+                    }
+                    else {
+                        return [column.dataField, operation, value];
+                    }
+                }
+            }
         },
         {
             dataField: 'Parameter',
@@ -198,8 +229,17 @@
 
     function getData1() {
         return [{
-            "RowNumber": "P1 Exhaust",
-            "EQPID": "AT"
+            "RowNumber": "P1 Exhaudst",
+            "EQPID": "ATwqaefwqedcfdxr"
+        }, {
+            "RowNumber": "P1 Exha",
+            "EQPID": "ATregaaearhbat"
+        }, {
+            "RowNumber": "Egdsert Exhaust",
+            "EQPID": "ATsfqwef"
+        }, {
+            "RowNumber": "P1 Exfgdeqst",
+            "EQPID": "ATwqagyjkthd"
         }, {
             "RowNumber": ".dx-menu-item.dx-state-focused::after",
             "EQPID": ".dx-datagrid-filter-row"

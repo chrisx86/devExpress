@@ -15,11 +15,55 @@
         "ExcelRemote BT",
         "ExcelRemote IP"
     ];
+
+    let DataSrc2 = [
+        "ExcelRemote",
+        "ExcelRemote",
+        "ExcelRemote"
+    ];
+    let ds = new DevExpress.data.DataSource({
+        store: DataSrc,
+        load: function(LoadOptions){
+            if(LoadOptions.searchValue != null){
+                return DataSrc;
+            }else{
+                return DataSrc;
+            }
+        }
+    });
+
+    let customDataSource = new DevExpress.data.CustomStore({
+        load: (loadOptions) => {
+            return DataSrc;
+        },
+        byKey: (key) => {
+            var d = new $.Deferred();
+            return d.promise();
+        }
+        // Needed to process selected value(s) in the SelectBox, Lookup, Autocomplete, and DropDownBox
+        // byKey: function(key) {
+        //     var d = new $.Deferred();
+        //     $.get('https://mydomain.com/MyDataService?id=' + key)
+        //         .done(function(result) {
+        //             d.resolve(result);
+        //         });
+        //     return d.promise();
+        // }
+    });
+
+
     inputGroupingName = $('#SelectBox').dxSelectBox({
+        dataSource: customDataSource,
         searchEnabled: true,
         acceptCustomValue: true,
-        wrapItemText: true
+        wrapItemText: true,
+        onValueChanged: function (e) {
+            console.log(e);
+        }
+        
     }).dxSelectBox("instance");
+
+
     var source = new DevExpress.data.DataSource({
         store: DataSrc,
         paginate: true,
@@ -27,7 +71,10 @@
     });
     //inputGroupingName.option('dataSource', null);
     //let groupingName = inputGroupingName.option('value') == null ? '' : inputGroupingName.option('value').trim();
-    inputGroupingName.option('dataSource', source);
+    //nputGroupingName.option('dataSource', source);
+
+
+
 })();
 
 /*

@@ -1,0 +1,29 @@
+﻿#myWorksTest {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 3px;
+    padding-bottom: 100px;
+    min-height: 00px;
+}
+
+#rightArea{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #fff;
+    background-color: #00b3db;
+    border-color: #285e8e; /*set the color you want here*/
+    cursor: pointer;
+}
+#rightArea button{
+    margin-bottom: 40px;
+}
+#btn_OK{
+    float: right;
+    margin-top: 10px;
+}
+#fileArea{
+    display:flex;
+}
