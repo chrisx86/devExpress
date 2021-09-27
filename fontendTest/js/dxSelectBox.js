@@ -21,6 +21,43 @@
         "ExcelRemote",
         "ExcelRemote"
     ];
+let DataSrc3 = {
+    "glossary": {
+        "title": "example glossary",
+		"GlossDiv": {
+            "title": "S",
+			"GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+					"SortAs": "SGML",
+					"GlossTerm": "Standard Generalized Markup Language",
+					"Acronym": "SGML",
+					"Abbrev": "ISO 8879:1986",
+					"GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+						"GlossSeeAlso": ["GML", "XML"]
+                    },
+					"GlossSee": "markup"
+                }
+            }
+        }
+    }
+};
+
+    debugger;
+    //localStorage.setItem("datas1", JSON.stringify([...DataSrc3, "abc111"]));
+    localStorage.setItem("datas2", JSON.stringify(DataSrc3));
+    let mm = JSON.parse(localStorage.getItem("datas1"));
+    let nn = mm??[];
+    let mm2 = JSON.parse(localStorage.getItem("datas2"));
+    let nn2 = mm2??'none';
+
+    let a = localStorage.setItem("meals", JSON.stringify([...DataSrc, "abc"]));
+    let b = localStorage.setItem("meals", JSON.stringify(DataSrc.filter((x)=> x.length > 1)));
+    let meals = JSON.parse(localStorage.getItem("meals"));
+    let c = localStorage.getItem("meals");
+
+
     let ds = new DevExpress.data.DataSource({
         store: DataSrc,
         load: function(LoadOptions){

@@ -612,7 +612,7 @@ namespace PhotoSharing.Controllers
 
         }
 
-
+        //public async Task<List<Photo>> IImport(IFormFile file)
         public List<Photo> Import(FormCollection post)
         {
             var list = new List<Photo>();
@@ -638,6 +638,46 @@ namespace PhotoSharing.Controllers
             }
             return list;
         }
+
+
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+        OleDbConnection Econ;
+
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase file){
+            string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+            string filepath = "/excelfolder/" + filename;
+            file.SaveAs(Path.Combine(Server.MapPath("/excelfolder"), filename));
+            InsertExceldata(filepath, filename);
+            return View();
+        }
+
+        private void InsertExceldata(string filepath, string filename){
+            string fullpath = Server.MapPath("/excelfolder/") + filename;
+            ExcelConn(fullpath);
+            string query = string.Format("select * from [{0}]", "Sheet1$");
+            OleDbCommand Ecom = new OleDbCommand(query, Econ);
+            Econ.Open();
+            DataSet ds = new DataSet();
+            OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
+            oda.Fill(ds);
+            Econ.Close();
+            DataTable dt = new DataTable();
+            SqlBulkCopy objbulk = new SqlBulkCopy(con);
+            objbulk.DestinationTableName = "tbl_registration";
+            objbulk.ColumnMappings.Add("Email", "Email");
+            objbulk.ColumnMappings.Add("Name", "Name");
+            con.Open();
+            objbulk.WriteToServer(dt);
+        }
+
+        private void ExcelConn(string filepath){
+            string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", filepath);
+            Econ = new OleDbConnection(constr);
+        }
+
+
+
 
         //        [HttpPost]
         //        public ActionResult UploadExcelsheet()
